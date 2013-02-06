@@ -19,7 +19,15 @@
 // code.
 
 function xhrGet(reqUri, callback, type) {
-    // YOUR CODE HERE
+  var XHR = new XMLHttpRequest();
+   XHR.onload = function(){
+        callback(this);
+    };
+   if (typeof type == 'string' || type instanceof String){
+       XHR.responseType = type;
+   }
+   XHR.open("GET", reqUri, true);
+   XHR.send();
 }
 
 parseJSON = function (xhr) {
